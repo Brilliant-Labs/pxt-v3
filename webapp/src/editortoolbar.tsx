@@ -324,7 +324,7 @@ export class EditorToolbar extends data.Component<ISettingsProps, {}> {
                     </div>
                 </div>}
             <div id="editorToolbarArea" role="menu" className="ui column items">
-            <div className="ui button icon primary left" onClick={this.showFirmwareDialog}>Firmware</div>
+            <div className="ui button icon primary left" onClick={this.showFirmwareDialog}>b.Board Firmware</div>
             <div className="ui button icon primary left" onClick={this.showCloudDialog}>Cloud</div>
             <div className="ui button icon primary left" onClick={this.showSupportDialog}>Support</div>
                 {showUndoRedo && <div className="ui icon buttons">{this.getUndoRedo(computer)}</div>}

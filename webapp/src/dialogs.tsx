@@ -407,7 +407,7 @@ export function showFirmwareDialogAsync() {
     const shareUrl = pxt.appTarget.appTheme.shareUrl || "https://makecode.com/";
 
     return core.confirmAsync({
-        header: lf("bBoard Firmware Update"),
+        header: lf("b.Board Firmware Update"),
         hasCloseIcon: true,
         jsx: <div className="ui form">
             <div className="ui icon purple message">

@@ -827,7 +827,7 @@ export class Toolbox extends data.Component<ToolboxProps, ToolboxState> {
                     )) : undefined}
 
                     {hasAdvanced6 ? <TreeSeparator key="advancedseparator6" /> : undefined}
-                    {hasAdvanced6 ? <CategoryItem toolbox={this} treeRow={{ nameid: "", name: "Clickboards: Display", color: "#D400D4", icon: pxt.toolbox.getNamespaceIcon(showAdvanced ? 'advancedexpanded' : 'advancedcollapsed') }} onCategoryClick={this.advancedClicked6} topRowIndex={topRowIndex++} /> : undefined}
+                    {hasAdvanced6 ? <CategoryItem toolbox={this} treeRow={{ nameid: "", name: "Clickboards: Display & LED", color: "#D400D4", icon: pxt.toolbox.getNamespaceIcon(showAdvanced ? 'advancedexpanded' : 'advancedcollapsed') }} onCategoryClick={this.advancedClicked6} topRowIndex={topRowIndex++} /> : undefined}
                     {this.state.showAdvanced6 ? advancedCategories6.map((treeRow) => (
                         <CategoryItem key={treeRow.nameid} toolbox={this} index={index++} selected={selectedItem == treeRow.nameid} childrenVisible={expandedItem == treeRow.nameid} treeRow={treeRow} onCategoryClick={this.setSelection}>
                             {treeRow.subcategories ? treeRow.subcategories.map((subTreeRow) => (

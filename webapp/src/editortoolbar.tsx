@@ -5,6 +5,7 @@ import * as data from "./data";
 import * as sui from "./sui";
 import * as githubbutton from "./githubbutton";
 import * as cmds from "./cmds"
+import * as dialogs from "./dialogs";
 
 type ISettingsProps = pxt.editor.ISettingsProps;
 
@@ -80,6 +81,18 @@ export class EditorToolbar extends data.Component<ISettingsProps, {}> {
     toggleCollapsed() {
         pxt.tickEvent("editortools.portraitToggleCollapse", { collapsed: this.getCollapsedState(), headless: this.getHeadlessState() }, { interactiveConsent: true });
         this.props.parent.toggleSimulatorCollapse();
+    }
+
+    showFirmwareDialog() {
+        dialogs.showFirmwareDialogAsync();
+    }
+
+    showCloudDialog() {
+        dialogs.showCloudDialogAsync();
+    }
+
+    showSupportDialog() {
+        dialogs.showSupportDialogAsync();
     }
 
     private getViewString(view: View): string {
@@ -311,6 +324,9 @@ export class EditorToolbar extends data.Component<ISettingsProps, {}> {
                     </div>
                 </div>}
             <div id="editorToolbarArea" role="menu" className="ui column items">
+            <div className="ui button icon primary left" onClick={this.showFirmwareDialog}>Firmware</div>
+            <div className="ui button icon primary left" onClick={this.showCloudDialog}>Cloud</div>
+            <div className="ui button icon primary left" onClick={this.showSupportDialog}>Support</div>
                 {showUndoRedo && <div className="ui icon buttons">{this.getUndoRedo(computer)}</div>}
                 {showZoomControls && <div className="ui icon buttons mobile hide">{this.getZoomControl(computer)}</div>}
                 {targetTheme.bigRunButton &&

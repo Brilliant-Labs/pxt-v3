@@ -402,6 +402,74 @@ export function showImportUrlDialogAsync() {
     })
 }
 
+export function showFirmwareDialogAsync() {
+    let input: HTMLInputElement;
+    const shareUrl = pxt.appTarget.appTheme.shareUrl || "https://makecode.com/";
+
+    return core.confirmAsync({
+        header: lf("bBoard Firmware Update"),
+        hasCloseIcon: true,
+        jsx: <div className="ui form">
+            <div className="ui icon purple message">
+                <i className="user icon" aria-hidden={true}></i>
+                <div className="content">
+                    <h3 className="header">
+                        {lf("Instructions")}
+                    </h3>
+                    <p>
+                        {lf("Turn the b.Board off")}
+                        <br />
+                        {lf("Download the firmware below and load it onto the micro:bit")}
+                        <br />
+                        {lf("Disconnect your micro:bit from your computer")}
+                        <br />
+                        {lf("Turn the b.Board to the on position and confirm the red LED is on")}
+                        <br />
+                        {lf("Enjoy the light show")}
+                        <br />
+                        {lf("When every other LED is lit up as shown, the firmware has been updated")}
+                        <br />
+                        {lf("Turn the b.Board off again")}
+                        <br />
+                        {lf("Load some code onto your micro:bit")}
+                        <br />                        
+                        {lf("Turn the b.Board back on again and enjoy!")}
+                    </p>
+                </div>
+            </div>
+            <div>
+                <button onClick={() => window.open("bBoardFirmware2_05.hex", "_blank")} className="ui button icon icon-and-text primary purple attached">
+                    Click to Download bBoardFirmware2_05.hex
+                </button>
+            </div>
+        </div>,
+    }).then(res => {
+        if (res) {
+            pxt.tickEvent("app.open.url");
+            const url = input.value;
+            let projectId = pxt.github.normalizeRepoId(url);
+            if (!projectId)
+                projectId = pxt.Cloud.parseScriptId(url);
+            if (!projectId) {
+                return Promise.reject(new Error(lf("Sorry, the project url looks invalid.")));
+            }
+
+            return Promise.resolve(projectId);
+        }
+
+        // Cancelled
+        return Promise.resolve(undefined);
+    })
+}
+
+export function showCloudDialogAsync() {
+    window.open("https://cloud.brilliantlabs.ca", "_blank")
+}
+
+export function showSupportDialogAsync() {
+    window.open("https://support.brilliantlabs.ca", "_blank")
+}
+
 export function showGithubTokenError(err: any) {
     if (err.statusCode == 401) {
         core.errorNotification(lf("GitHub didn't accept token"))

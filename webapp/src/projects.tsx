@@ -1281,7 +1281,7 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
 
         return <sui.Modal isOpen={visible} className="newproject" size="tiny"
             onClose={this.hide} dimmer={true} buttons={actions}
-            closeIcon={true} header={lf("Create a Project {0}", emoji)} header2={lf("Remember to upgrade your bBoard Firmware")}
+            closeIcon={true} header={lf("Create a Project {0}", emoji)} header2={lf("Remember to upgrade your b.Board Firmware")}
             closeOnDimmerClick closeOnDocumentClick closeOnEscape
         >
             <div>

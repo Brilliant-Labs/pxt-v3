@@ -427,6 +427,6 @@ export function renderUnpairDialog() {
         <img className="ui image centered medium" src={"./docs/static/webusb/unpair.gif"} alt={lf("A gif showing how to unpair the {0}", boardName)} />
     </div>
     const helpUrl = pxt.appTarget.appTheme.usbDocs
-        && (pxt.appTarget.appTheme.usbDocs + "/webusb#unpair");
+        && (pxt.appTarget.appTheme.usbDocs + "#unpair")
     return { header, jsx, helpUrl };
 }

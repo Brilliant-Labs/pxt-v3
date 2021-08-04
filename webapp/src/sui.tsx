@@ -1158,6 +1158,7 @@ export interface ModalProps extends ReactModal.Props {
     longer?: boolean;
 
     header?: string;
+    header2?: string;
     headerIcon?: string;
     headerClass?: string;
     description?: string;
@@ -1268,7 +1269,7 @@ export class Modal extends data.Component<ModalProps, ModalState> {
     renderCore() {
         const { isOpen, size, longer, basic, className,
             onClose, closeIcon, children, onKeyDown,
-            header, headerIcon, headerClass, headerActions, helpUrl, description,
+            header, header2, headerIcon, headerClass, headerActions, helpUrl, description,
             closeOnDimmerClick, closeOnDocumentClick, closeOnEscape,
             shouldCloseOnEsc, shouldCloseOnOverlayClick, shouldFocusAfterRender, overlayClassName, ...rest } = this.props;
         const { marginTop, scrolling, mountClasses } = this.state;
@@ -1314,6 +1315,7 @@ export class Modal extends data.Component<ModalProps, ModalState> {
             {header || showBack || helpUrl ? <div id={this.id + 'title'} className={"header " + (headerClass || "")}>
                 {headerIcon && <Icon icon={headerIcon} />}
                 <h3 className="header-title" style={{ margin: `0 ${helpUrl ? '-20rem' : '0'} 0 ${showBack ? '-20rem' : '0'}` }}>{header}</h3>
+                <span className="header-title" style={{ margin: `0 ${helpUrl ? '-20rem' : '0'} 0 ${showBack ? '-20rem' : '0'}`, color:'red', fontSize: '1rem'}}>{header2}</span>
                 {showBack ? <div className="header-close">
                     <Button className="back-button large" title={lf("Go back")} onClick={onClose} tabIndex={0} onKeyDown={fireClickOnEnter}>
                         <Icon icon="arrow left" />

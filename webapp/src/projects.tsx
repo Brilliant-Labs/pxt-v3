@@ -1385,7 +1385,7 @@ export class ExitAndSaveDialog extends data.Component<ISettingsProps, ExitAndSav
         return (
             <sui.Modal isOpen={visible} className={classes} size="tiny"
                 onClose={this.hide} dimmer={true} buttons={actions}
-                closeIcon={true} header={lf("Project has no name {0}", this.state.emoji)}
+                closeIcon={true} header={lf("Project has no name {0}", this.state.emoji)} header2={lf("Remember to upgrade your b.Board Firmware")}
                 closeOnDimmerClick closeOnDocumentClick closeOnEscape
             >
                 <div>
@@ -1520,7 +1520,7 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
 
         return <sui.Modal isOpen={visible} className={classes} size="tiny"
             onClose={this.hide} dimmer={true} buttons={actions}
-            closeIcon={true} header={lf("Create a Project {0}", emoji)}
+            closeIcon={true} header={lf("Create a Project {0}", emoji)} header2={lf("Remember to upgrade your b.Board Firmware")}
             closeOnDimmerClick closeOnDocumentClick closeOnEscape
         >
             <div>

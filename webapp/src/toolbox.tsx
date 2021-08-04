@@ -93,6 +93,15 @@ export interface ToolboxProps {
 
 export interface ToolboxState {
     showAdvanced?: boolean;
+    showAdvanced1?: boolean;
+    showAdvanced2?: boolean;
+    showAdvanced3?: boolean;
+    showAdvanced4?: boolean;
+    showAdvanced5?: boolean;
+    showAdvanced6?: boolean;
+    showAdvanced7?: boolean;
+    showAdvanced8?: boolean;
+    showAdvanced9?: boolean
     visible?: boolean;
     loading?: boolean;
     selectedItem?: string;
@@ -128,11 +137,29 @@ export class Toolbox extends data.Component<ToolboxProps, ToolboxState> {
             visible: false,
             loading: false,
             showAdvanced: false,
+            showAdvanced1: false,
+            showAdvanced2: false,
+            showAdvanced3: false,
+            showAdvanced4: false,
+            showAdvanced5: false,
+            showAdvanced6: false,
+            showAdvanced7: false,
+            showAdvanced8: false,
+            showAdvanced9: false,
             shouldAnimate: !pxt.shell.getToolboxAnimation()
         }
 
         this.setSelection = this.setSelection.bind(this);
         this.advancedClicked = this.advancedClicked.bind(this);
+        this.advancedClicked1 = this.advancedClicked1.bind(this);
+        this.advancedClicked2 = this.advancedClicked2.bind(this);
+        this.advancedClicked3 = this.advancedClicked3.bind(this);
+        this.advancedClicked4 = this.advancedClicked4.bind(this);
+        this.advancedClicked5 = this.advancedClicked5.bind(this);
+        this.advancedClicked6 = this.advancedClicked6.bind(this);
+        this.advancedClicked7 = this.advancedClicked7.bind(this);
+        this.advancedClicked8 = this.advancedClicked8.bind(this);
+        this.advancedClicked9 = this.advancedClicked9.bind(this);
         this.recoverToolbox = this.recoverToolbox.bind(this);
     }
 
@@ -230,7 +257,7 @@ export class Toolbox extends data.Component<ToolboxProps, ToolboxState> {
                 this.setState({ selectedItem: id, expandedItem: nameid, focusSearch: false })
                 this.selectedIndex = index;
                 this.selectedTreeRow = treeRow;
-                if (treeRow.advanced && !this.state.showAdvanced) this.showAdvanced();
+                //if (treeRow.advanced && !this.state.showAdvanced) this.showAdvanced();
 
                 if (!customClick) {
                     // Show flyout
@@ -280,6 +307,15 @@ export class Toolbox extends data.Component<ToolboxProps, ToolboxState> {
         if (prevState.visible != this.state.visible
             || prevState.loading != this.state.loading
             || prevState.showAdvanced != this.state.showAdvanced
+            || prevState.showAdvanced1 != this.state.showAdvanced1
+            || prevState.showAdvanced2 != this.state.showAdvanced2
+            || prevState.showAdvanced3 != this.state.showAdvanced3
+            || prevState.showAdvanced4 != this.state.showAdvanced4
+            || prevState.showAdvanced5 != this.state.showAdvanced5
+            || prevState.showAdvanced6 != this.state.showAdvanced6
+            || prevState.showAdvanced7 != this.state.showAdvanced7
+            || prevState.showAdvanced8 != this.state.showAdvanced8
+            || prevState.showAdvanced9 != this.state.showAdvanced9
             || this.state.expandedItem != prevState.expandedItem) {
             this.props.parent.resize();
         }
@@ -318,6 +354,60 @@ export class Toolbox extends data.Component<ToolboxProps, ToolboxState> {
         this.showAdvanced();
     }
 
+    advancedClicked1() {
+        const { editorname } = this.props;
+        pxt.tickEvent(`${editorname}.advanced`, undefined, { interactiveConsent: true });
+        this.showAdvanced1();
+    }
+
+    advancedClicked2() {
+        const { editorname } = this.props;
+        pxt.tickEvent(`${editorname}.advanced`, undefined, { interactiveConsent: true });
+        this.showAdvanced2();
+    }
+
+    advancedClicked3() {
+        const { editorname } = this.props;
+        pxt.tickEvent(`${editorname}.advanced`, undefined, { interactiveConsent: true });
+        this.showAdvanced3();
+    }
+
+    advancedClicked4() {
+        const { editorname } = this.props;
+        pxt.tickEvent(`${editorname}.advanced`, undefined, { interactiveConsent: true });
+        this.showAdvanced4();
+    }
+
+    advancedClicked5() {
+        const { editorname } = this.props;
+        pxt.tickEvent(`${editorname}.advanced`, undefined, { interactiveConsent: true });
+        this.showAdvanced5();
+    }
+
+    advancedClicked6() {
+        const { editorname } = this.props;
+        pxt.tickEvent(`${editorname}.advanced`, undefined, { interactiveConsent: true });
+        this.showAdvanced6();
+    }
+
+    advancedClicked7() {
+        const { editorname } = this.props;
+        pxt.tickEvent(`${editorname}.advanced`, undefined, { interactiveConsent: true });
+        this.showAdvanced7();
+    }
+
+    advancedClicked8() {
+        const { editorname } = this.props;
+        pxt.tickEvent(`${editorname}.advanced`, undefined, { interactiveConsent: true });
+        this.showAdvanced8();
+    }
+
+    advancedClicked9() {
+        const { editorname } = this.props;
+        pxt.tickEvent(`${editorname}.advanced`, undefined, { interactiveConsent: true });
+        this.showAdvanced9();
+    }
+
     showAdvanced() {
         const { parent } = this.props;
         if (this.selectedItem && this.selectedItem.props.treeRow
@@ -326,6 +416,96 @@ export class Toolbox extends data.Component<ToolboxProps, ToolboxState> {
             this.closeFlyout();
         }
         this.setState({ showAdvanced: !this.state.showAdvanced });
+    }
+
+    showAdvanced1() {
+        const { parent } = this.props;
+        if (this.selectedItem && this.selectedItem.props.treeRow
+            && this.selectedItem.props.treeRow.advanced) {
+            this.clear();
+            this.closeFlyout();
+        }
+        this.setState({ showAdvanced1: !this.state.showAdvanced1 });
+    }
+
+    showAdvanced2() {
+        const { parent } = this.props;
+        if (this.selectedItem && this.selectedItem.props.treeRow
+            && this.selectedItem.props.treeRow.advanced) {
+            this.clear();
+            this.closeFlyout();
+        }
+        this.setState({ showAdvanced2: !this.state.showAdvanced2 });
+    }
+
+    showAdvanced3() {
+        const { parent } = this.props;
+        if (this.selectedItem && this.selectedItem.props.treeRow
+            && this.selectedItem.props.treeRow.advanced) {
+            this.clear();
+            this.closeFlyout();
+        }
+        this.setState({ showAdvanced3: !this.state.showAdvanced3 });
+    }
+
+    showAdvanced4() {
+        const { parent } = this.props;
+        if (this.selectedItem && this.selectedItem.props.treeRow
+            && this.selectedItem.props.treeRow.advanced) {
+            this.clear();
+            this.closeFlyout();
+        }
+        this.setState({ showAdvanced4: !this.state.showAdvanced4 });
+    }
+
+    showAdvanced5() {
+        const { parent } = this.props;
+        if (this.selectedItem && this.selectedItem.props.treeRow
+            && this.selectedItem.props.treeRow.advanced) {
+            this.clear();
+            this.closeFlyout();
+        }
+        this.setState({ showAdvanced5: !this.state.showAdvanced5 });
+    }
+
+    showAdvanced6() {
+        const { parent } = this.props;
+        if (this.selectedItem && this.selectedItem.props.treeRow
+            && this.selectedItem.props.treeRow.advanced) {
+            this.clear();
+            this.closeFlyout();
+        }
+        this.setState({ showAdvanced6: !this.state.showAdvanced6 });
+    }
+
+    showAdvanced7() {
+        const { parent } = this.props;
+        if (this.selectedItem && this.selectedItem.props.treeRow
+            && this.selectedItem.props.treeRow.advanced) {
+            this.clear();
+            this.closeFlyout();
+        }
+        this.setState({ showAdvanced7: !this.state.showAdvanced7 });
+    }
+
+    showAdvanced8() {
+        const { parent } = this.props;
+        if (this.selectedItem && this.selectedItem.props.treeRow
+            && this.selectedItem.props.treeRow.advanced) {
+            this.clear();
+            this.closeFlyout();
+        }
+        this.setState({ showAdvanced8: !this.state.showAdvanced8 });
+    }
+
+    showAdvanced9() {
+        const { parent } = this.props;
+        if (this.selectedItem && this.selectedItem.props.treeRow
+            && this.selectedItem.props.treeRow.advanced) {
+            this.clear();
+            this.closeFlyout();
+        }
+        this.setState({ showAdvanced9: !this.state.showAdvanced9 });
     }
 
     getSearchBlocks(): BlockDefinition[] {
@@ -372,9 +552,52 @@ export class Toolbox extends data.Component<ToolboxProps, ToolboxState> {
         parent.closeFlyout();
     }
 
-    hasAdvancedCategories() {
+    hasAdvancedCategories(group: string) {
         const { categories } = this.state;
-        return categories.some(category => category.advanced);
+        switch (group) {
+            case "1001":
+                return categories.some(category => category.labelLineWidth === "1001");
+            case "1002":
+                return categories.some(category => category.labelLineWidth === "1002");
+            case "1003":
+                return categories.some(category => category.labelLineWidth === "1003");
+            case "1004":
+                return categories.some(category => category.labelLineWidth === "1004");
+            case "1005":
+                return categories.some(category => category.labelLineWidth === "1005");
+            case "1006":
+                return categories.some(category => category.labelLineWidth === "1006");
+            case "1007":
+                return categories.some(category => category.labelLineWidth === "1007");
+            case "1008":
+                return categories.some(category => category.labelLineWidth === "1008");
+            case "1009":
+                return categories.some(category => category.labelLineWidth === "1009");
+            case "0":
+                return categories.some(category => category.advanced && 
+                    (category.labelLineWidth !== "1001" &&
+                        category.labelLineWidth !== "1002" &&
+                        category.labelLineWidth !== "1003" &&
+                        category.labelLineWidth !== "1004" &&
+                        category.labelLineWidth !== "1005" &&
+                        category.labelLineWidth !== "1006" &&
+                        category.labelLineWidth !== "1007" &&
+                        category.labelLineWidth !== "1008" &&
+                        category.labelLineWidth !== "1009"
+                        ));
+                default:
+                    return categories.some(category => category.advanced && 
+                        (category.labelLineWidth !== "1001" &&
+                            category.labelLineWidth !== "1002" &&
+                            category.labelLineWidth !== "1003" &&
+                            category.labelLineWidth !== "1004" &&
+                            category.labelLineWidth !== "1005" &&
+                            category.labelLineWidth !== "1006" &&
+                            category.labelLineWidth !== "1007" &&
+                            category.labelLineWidth !== "1008" &&
+                            category.labelLineWidth !== "1009"
+                            ));
+                    }
     }
 
     getNonAdvancedCategories() {
@@ -382,9 +605,53 @@ export class Toolbox extends data.Component<ToolboxProps, ToolboxState> {
         return categories.filter(category => !category.advanced);
     }
 
-    getAdvancedCategories() {
+    getAdvancedCategories(group: string) {
         const { categories } = this.state;
-        return categories.filter(category => category.advanced);
+        switch (group) {
+            case "1001":
+                return categories.filter(category => category.advanced && (category.labelLineWidth === "1001"));
+            case "1002":
+                return categories.filter(category => category.advanced && (category.labelLineWidth === "1002"));
+            case "1003":
+                return categories.filter(category => category.advanced && (category.labelLineWidth === "1003"));
+            case "1004":
+                return categories.filter(category => category.advanced && (category.labelLineWidth === "1004"));
+            case "1005":
+                return categories.filter(category => category.advanced && (category.labelLineWidth === "1005"));
+            case "1006":
+                return categories.filter(category => category.advanced && (category.labelLineWidth === "1006"));
+            case "1007":
+                return categories.filter(category => category.advanced && (category.labelLineWidth === "1007"));
+            case "1008":
+                return categories.filter(category => category.advanced && (category.labelLineWidth === "1008"));
+            case "1009":
+                return categories.filter(category => category.advanced && (category.labelLineWidth === "1009"));
+            case "0":
+                return categories.filter(category => category.advanced && 
+                        (category.labelLineWidth !== "1001" &&
+                            category.labelLineWidth !== "1002" &&
+                            category.labelLineWidth !== "1003" &&
+                            category.labelLineWidth !== "1004" &&
+                            category.labelLineWidth !== "1005" &&
+                            category.labelLineWidth !== "1006" &&
+                            category.labelLineWidth !== "1007" &&
+                            category.labelLineWidth !== "1008" &&
+                            category.labelLineWidth !== "1009"
+                            ));
+                    ;
+            default:
+                return categories.filter(category => category.advanced && 
+                    (category.labelLineWidth !== "1001" &&
+                        category.labelLineWidth !== "1002" &&
+                        category.labelLineWidth !== "1003" &&
+                        category.labelLineWidth !== "1004" &&
+                        category.labelLineWidth !== "1005" &&
+                        category.labelLineWidth !== "1006" &&
+                        category.labelLineWidth !== "1007" &&
+                        category.labelLineWidth !== "1008" &&
+                        category.labelLineWidth !== "1009"
+                        ));
+        }
     }
 
     private getAllCategoriesList(visibleOnly?: boolean): ToolboxCategory[] {
@@ -441,10 +708,28 @@ export class Toolbox extends data.Component<ToolboxProps, ToolboxState> {
             </div> : undefined}
         </div>;
 
-        const hasAdvanced = this.hasAdvancedCategories();
+        const hasAdvanced = this.hasAdvancedCategories("");
+        const hasAdvanced1 = this.hasAdvancedCategories("1001");
+        const hasAdvanced2 = this.hasAdvancedCategories("1002");
+        const hasAdvanced3 = this.hasAdvancedCategories("1003");
+        const hasAdvanced4 = this.hasAdvancedCategories("1004");
+        const hasAdvanced5 = this.hasAdvancedCategories("1005");
+        const hasAdvanced6 = this.hasAdvancedCategories("1006");
+        const hasAdvanced7 = this.hasAdvancedCategories("1007");
+        const hasAdvanced8 = this.hasAdvancedCategories("1008");
+        const hasAdvanced9 = this.hasAdvancedCategories("1009");
 
         let nonAdvancedCategories = this.getNonAdvancedCategories();
-        const advancedCategories = hasAdvanced ? this.getAdvancedCategories() : [];
+        const advancedCategories = hasAdvanced ? this.getAdvancedCategories("") : [];
+        const advancedCategories1 = hasAdvanced ? this.getAdvancedCategories("1001") : [];
+        const advancedCategories2 = hasAdvanced ? this.getAdvancedCategories("1002") : [];
+        const advancedCategories3 = hasAdvanced ? this.getAdvancedCategories("1003") : [];
+        const advancedCategories4 = hasAdvanced ? this.getAdvancedCategories("1004") : [];
+        const advancedCategories5 = hasAdvanced ? this.getAdvancedCategories("1005") : [];
+        const advancedCategories6 = hasAdvanced ? this.getAdvancedCategories("1006") : [];
+        const advancedCategories7 = hasAdvanced ? this.getAdvancedCategories("1007") : [];
+        const advancedCategories8 = hasAdvanced ? this.getAdvancedCategories("1008") : [];
+        const advancedCategories9 = hasAdvanced ? this.getAdvancedCategories("1009") : [];
 
         this.items = this.getAllCategoriesList();
 
@@ -488,6 +773,97 @@ export class Toolbox extends data.Component<ToolboxProps, ToolboxState> {
                             )) : undefined}
                         </CategoryItem>
                     )) : undefined}
+
+                    {hasAdvanced1 ? <TreeSeparator key="advancedseparator1" /> : undefined}
+                    {hasAdvanced1 ? <CategoryItem toolbox={this} treeRow={{ nameid: "", name: "b.Board", color: "#9E4894", icon: pxt.toolbox.getNamespaceIcon(showAdvanced ? 'advancedexpanded' : 'advancedcollapsed') }} onCategoryClick={this.advancedClicked1} topRowIndex={topRowIndex++} /> : undefined}
+                    {this.state.showAdvanced1 ? advancedCategories1.map((treeRow) => (
+                        <CategoryItem key={treeRow.nameid} toolbox={this} index={index++} selected={selectedItem == treeRow.nameid} childrenVisible={expandedItem == treeRow.nameid} treeRow={treeRow} onCategoryClick={this.setSelection}>
+                            {treeRow.subcategories ? treeRow.subcategories.map((subTreeRow) => (
+                                <CategoryItem key={subTreeRow.nameid} toolbox={this} index={index++} selected={selectedItem == (subTreeRow.nameid + subTreeRow.subns)} treeRow={subTreeRow} onCategoryClick={this.setSelection} />
+                            )) : undefined}
+                        </CategoryItem>
+                    )) : undefined}
+
+                    {hasAdvanced2 ? <TreeSeparator key="advancedseparator2" /> : undefined}
+                    {hasAdvanced2 ? <CategoryItem toolbox={this} treeRow={{ nameid: "", name: "Clickboards: Sensors", color: "#33BEBB", icon: pxt.toolbox.getNamespaceIcon(showAdvanced ? 'advancedexpanded' : 'advancedcollapsed') }} onCategoryClick={this.advancedClicked2} topRowIndex={topRowIndex++} /> : undefined}
+                    {this.state.showAdvanced2 ? advancedCategories2.map((treeRow) => (
+                        <CategoryItem key={treeRow.nameid} toolbox={this} index={index++} selected={selectedItem == treeRow.nameid} childrenVisible={expandedItem == treeRow.nameid} treeRow={treeRow} onCategoryClick={this.setSelection}>
+                            {treeRow.subcategories ? treeRow.subcategories.map((subTreeRow) => (
+                                <CategoryItem key={subTreeRow.nameid} toolbox={this} index={index++} selected={selectedItem == (subTreeRow.nameid + subTreeRow.subns)} treeRow={subTreeRow} onCategoryClick={this.setSelection} />
+                            )) : undefined}
+                        </CategoryItem>
+                    )) : undefined}
+
+                    {hasAdvanced3 ? <TreeSeparator key="advancedseparator3" /> : undefined}
+                    {hasAdvanced3 ? <CategoryItem toolbox={this} treeRow={{ nameid: "", name: "Clickboards: Buttons & Switches", color: "#F4B820", icon: pxt.toolbox.getNamespaceIcon(showAdvanced ? 'advancedexpanded' : 'advancedcollapsed') }} onCategoryClick={this.advancedClicked3} topRowIndex={topRowIndex++} /> : undefined}
+                    {this.state.showAdvanced3 ? advancedCategories3.map((treeRow) => (
+                        <CategoryItem key={treeRow.nameid} toolbox={this} index={index++} selected={selectedItem == treeRow.nameid} childrenVisible={expandedItem == treeRow.nameid} treeRow={treeRow} onCategoryClick={this.setSelection}>
+                            {treeRow.subcategories ? treeRow.subcategories.map((subTreeRow) => (
+                                <CategoryItem key={subTreeRow.nameid} toolbox={this} index={index++} selected={selectedItem == (subTreeRow.nameid + subTreeRow.subns)} treeRow={subTreeRow} onCategoryClick={this.setSelection} />
+                            )) : undefined}
+                        </CategoryItem>
+                    )) : undefined}
+
+                    {hasAdvanced4 ? <TreeSeparator key="advancedseparator4" /> : undefined}
+                    {hasAdvanced4 ? <CategoryItem toolbox={this} treeRow={{ nameid: "", name: "Clickboards: Wireless", color: "#FF2F92", icon: pxt.toolbox.getNamespaceIcon(showAdvanced ? 'advancedexpanded' : 'advancedcollapsed') }} onCategoryClick={this.advancedClicked4} topRowIndex={topRowIndex++} /> : undefined}
+                    {this.state.showAdvanced4 ? advancedCategories4.map((treeRow) => (
+                        <CategoryItem key={treeRow.nameid} toolbox={this} index={index++} selected={selectedItem == treeRow.nameid} childrenVisible={expandedItem == treeRow.nameid} treeRow={treeRow} onCategoryClick={this.setSelection}>
+                            {treeRow.subcategories ? treeRow.subcategories.map((subTreeRow) => (
+                                <CategoryItem key={subTreeRow.nameid} toolbox={this} index={index++} selected={selectedItem == (subTreeRow.nameid + subTreeRow.subns)} treeRow={subTreeRow} onCategoryClick={this.setSelection} />
+                            )) : undefined}
+                        </CategoryItem>
+                    )) : undefined}
+
+                    {hasAdvanced5 ? <TreeSeparator key="advancedseparator5" /> : undefined}
+                    {hasAdvanced5 ? <CategoryItem toolbox={this} treeRow={{ nameid: "", name: "Clickboards: Motors", color: "#FF2F92", icon: pxt.toolbox.getNamespaceIcon(showAdvanced ? 'advancedexpanded' : 'advancedcollapsed') }} onCategoryClick={this.advancedClicked5} topRowIndex={topRowIndex++} /> : undefined}
+                    {this.state.showAdvanced5 ? advancedCategories5.map((treeRow) => (
+                        <CategoryItem key={treeRow.nameid} toolbox={this} index={index++} selected={selectedItem == treeRow.nameid} childrenVisible={expandedItem == treeRow.nameid} treeRow={treeRow} onCategoryClick={this.setSelection}>
+                            {treeRow.subcategories ? treeRow.subcategories.map((subTreeRow) => (
+                                <CategoryItem key={subTreeRow.nameid} toolbox={this} index={index++} selected={selectedItem == (subTreeRow.nameid + subTreeRow.subns)} treeRow={subTreeRow} onCategoryClick={this.setSelection} />
+                            )) : undefined}
+                        </CategoryItem>
+                    )) : undefined}
+
+                    {hasAdvanced6 ? <TreeSeparator key="advancedseparator6" /> : undefined}
+                    {hasAdvanced6 ? <CategoryItem toolbox={this} treeRow={{ nameid: "", name: "Clickboards: Display & LED", color: "#D400D4", icon: pxt.toolbox.getNamespaceIcon(showAdvanced ? 'advancedexpanded' : 'advancedcollapsed') }} onCategoryClick={this.advancedClicked6} topRowIndex={topRowIndex++} /> : undefined}
+                    {this.state.showAdvanced6 ? advancedCategories6.map((treeRow) => (
+                        <CategoryItem key={treeRow.nameid} toolbox={this} index={index++} selected={selectedItem == treeRow.nameid} childrenVisible={expandedItem == treeRow.nameid} treeRow={treeRow} onCategoryClick={this.setSelection}>
+                            {treeRow.subcategories ? treeRow.subcategories.map((subTreeRow) => (
+                                <CategoryItem key={subTreeRow.nameid} toolbox={this} index={index++} selected={selectedItem == (subTreeRow.nameid + subTreeRow.subns)} treeRow={subTreeRow} onCategoryClick={this.setSelection} />
+                            )) : undefined}
+                        </CategoryItem>
+                    )) : undefined}
+
+                    {hasAdvanced7 ? <TreeSeparator key="advancedseparator7" /> : undefined}
+                    {hasAdvanced7 ? <CategoryItem toolbox={this} treeRow={{ nameid: "", name: "Clickboards: Power", color: "#FF2F92", icon: pxt.toolbox.getNamespaceIcon(showAdvanced ? 'advancedexpanded' : 'advancedcollapsed') }} onCategoryClick={this.advancedClicked7} topRowIndex={topRowIndex++} /> : undefined}
+                    {this.state.showAdvanced7 ? advancedCategories7.map((treeRow) => (
+                        <CategoryItem key={treeRow.nameid} toolbox={this} index={index++} selected={selectedItem == treeRow.nameid} childrenVisible={expandedItem == treeRow.nameid} treeRow={treeRow} onCategoryClick={this.setSelection}>
+                            {treeRow.subcategories ? treeRow.subcategories.map((subTreeRow) => (
+                                <CategoryItem key={subTreeRow.nameid} toolbox={this} index={index++} selected={selectedItem == (subTreeRow.nameid + subTreeRow.subns)} treeRow={subTreeRow} onCategoryClick={this.setSelection} />
+                            )) : undefined}
+                        </CategoryItem>
+                    )) : undefined}
+
+                    {hasAdvanced8 ? <TreeSeparator key="advancedseparator8" /> : undefined}
+                    {hasAdvanced8 ? <CategoryItem toolbox={this} treeRow={{ nameid: "", name: "Cybersecurity", color: "#FF2F92", icon: pxt.toolbox.getNamespaceIcon(showAdvanced ? 'advancedexpanded' : 'advancedcollapsed') }} onCategoryClick={this.advancedClicked8} topRowIndex={topRowIndex++} /> : undefined}
+                    {this.state.showAdvanced8 ? advancedCategories8.map((treeRow) => (
+                        <CategoryItem key={treeRow.nameid} toolbox={this} index={index++} selected={selectedItem == treeRow.nameid} childrenVisible={expandedItem == treeRow.nameid} treeRow={treeRow} onCategoryClick={this.setSelection}>
+                            {treeRow.subcategories ? treeRow.subcategories.map((subTreeRow) => (
+                                <CategoryItem key={subTreeRow.nameid} toolbox={this} index={index++} selected={selectedItem == (subTreeRow.nameid + subTreeRow.subns)} treeRow={subTreeRow} onCategoryClick={this.setSelection} />
+                            )) : undefined}
+                        </CategoryItem>
+                    )) : undefined}
+
+                    {hasAdvanced9 ? <TreeSeparator key="advancedseparator9" /> : undefined}
+                    {hasAdvanced9 ? <CategoryItem toolbox={this} treeRow={{ nameid: "", name: "External Sensors", color: "#A8AA36", icon: pxt.toolbox.getNamespaceIcon(showAdvanced ? 'advancedexpanded' : 'advancedcollapsed') }} onCategoryClick={this.advancedClicked9} topRowIndex={topRowIndex++} /> : undefined}
+                    {this.state.showAdvanced9 ? advancedCategories9.map((treeRow) => (
+                        <CategoryItem key={treeRow.nameid} toolbox={this} index={index++} selected={selectedItem == treeRow.nameid} childrenVisible={expandedItem == treeRow.nameid} treeRow={treeRow} onCategoryClick={this.setSelection}>
+                            {treeRow.subcategories ? treeRow.subcategories.map((subTreeRow) => (
+                                <CategoryItem key={subTreeRow.nameid} toolbox={this} index={index++} selected={selectedItem == (subTreeRow.nameid + subTreeRow.subns)} treeRow={subTreeRow} onCategoryClick={this.setSelection} />
+                            )) : undefined}
+                        </CategoryItem>
+                    )) : undefined}
+
                 </div>
             </div>
         </div>

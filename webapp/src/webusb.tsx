@@ -424,7 +424,7 @@ export function renderUnpairDialog() {
     const jsx = <div><p>
         {lf("You can unpair your {0} if the WebUSB download is malfunctioning. Click on the lock icon and uncheck your device.", boardName)}
     </p>
-        <img className="ui image centered medium" src={"./static/webusb/unpair.gif"} alt={lf("A gif showing how to unpair the {0}", boardName)} />
+        <img className="ui image centered medium" src={"./docs/static/webusb/unpair.gif"} alt={lf("A gif showing how to unpair the {0}", boardName)} />
     </div>
     const helpUrl = pxt.appTarget.appTheme.usbDocs
         && (pxt.appTarget.appTheme.usbDocs + "/webusb#unpair");

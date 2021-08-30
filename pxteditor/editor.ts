@@ -53,6 +53,7 @@ namespace pxt.editor {
         sideDocsLoadUrl?: string; // set once to load the side docs frame
         sideDocsCollapsed?: boolean;
         projectName?: string;
+        projectmbitversion?: number;
         suppressPackageWarning?: boolean;
 
         tutorialOptions?: pxt.tutorial.TutorialOptions;
@@ -109,6 +110,8 @@ namespace pxt.editor {
     export interface ProjectCreationOptions {
         prj?: pxt.ProjectTemplate;
         name?: string;
+        version?: number;
+        mbitversion?: number;
         documentation?: string;
         filesOverride?: pxt.Map<string>;
         filters?: ProjectFilters;

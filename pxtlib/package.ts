@@ -1037,7 +1037,8 @@ namespace pxt {
                 sourceFiles: [],
                 fileSystem: {},
                 target: target,
-                name: this.config ? this.config.name : ""
+                name: this.config ? this.config.name : "",
+                mbitversion: this.config ? this.config.mbitversion : 2
             }
 
             const generateFile = (fn: string, cont: string) => {

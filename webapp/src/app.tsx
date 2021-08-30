@@ -1532,6 +1532,7 @@ export class ProjectView
                     tutorialOptions: h.tutorial,
                     header: h,
                     projectName: h.name,
+                    projectmbitversion: h.mbitversion,
                     currFile: file,
                     sideDocsLoadUrl: '',
                     debugging: false
@@ -2324,6 +2325,7 @@ export class ProjectView
         if (!options.prj) options.prj = pxt.appTarget.blocksprj;
         let cfg = pxt.U.clone(options.prj.config);
         cfg.name = options.name || lf("Untitled");
+        cfg.mbitversion = options.mbitversion;
         cfg.documentation = options.documentation;
         let files: pxt.workspace.ScriptText = Util.clone(options.prj.files)
         if (options.filesOverride) {
@@ -2385,6 +2387,7 @@ export class ProjectView
 
         const hd = await workspace.installAsync({
             name: cfg.name,
+            mbitversion: cfg.mbitversion,
             meta: {},
             editor: options.preferredEditor || options.prj.id,
             pubId: "",

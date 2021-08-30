@@ -291,7 +291,7 @@ _start_${name}:
         vmsource += "\n; The end.\n"
         bin.writeFile(BINARY_ASM, vmsource)
 
-        let res = assemble(opts.target, bin, vmsource)
+        let res = assemble(opts.target, bin, vmsource, opts.mbitversion)
         if (res.src)
             bin.writeFile(pxtc.BINARY_ASM, res.src)
 

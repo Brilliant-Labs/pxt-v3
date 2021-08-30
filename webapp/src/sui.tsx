@@ -688,6 +688,7 @@ export interface InputProps {
     placeholder?: string;
     disabled?: boolean;
     onChange?: (v: string) => void;
+    onChange2?: (v: number) => void;
     onEnter?: () => void;
     lines?: number;
     readOnly?: boolean;

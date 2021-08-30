@@ -994,15 +994,24 @@ ${hexfile.hexPrelude()}
     }
 
     let peepDbg = false
-    export function assemble(target: CompileTarget, bin: Binary, src: string) {
+    export function assemble(target: CompileTarget, bin: Binary, src: string, mbitversion?: number) {
         let b = mkProcessorFile(target)
         b.emit(src);
 
-        src = `; Interface tables: ${bin.itFullEntries}/${bin.itEntries} (${Math.round(100 * bin.itFullEntries / bin.itEntries)}%)\n` +
-            `; Virtual methods: ${bin.numVirtMethods} / ${bin.numMethods}\n` +
-            b.getSource(!peepDbg, bin.numStmts, target.flashEnd);
+        console.log("HEXFILE mbitversion: " + mbitversion); 
 
-        throwAssemblerErrors(b)
+        if (mbitversion == 2)
+        {
+            src = `; Interface tables: ${bin.itFullEntries}/${bin.itEntries} (${Math.round(100 * bin.itFullEntries / bin.itEntries)}%)\n` +
+            `; Virtual methods: ${bin.numVirtMethods} / ${bin.numMethods}\n` +
+            b.getSource(!peepDbg, bin.numStmts, target.flashEnd2 );
+            throwAssemblerErrors(b)
+        } else {
+            src = `; Interface tables: ${bin.itFullEntries}/${bin.itEntries} (${Math.round(100 * bin.itFullEntries / bin.itEntries)}%)\n` +
+            `; Virtual methods: ${bin.numVirtMethods} / ${bin.numMethods}\n` +
+            b.getSource(!peepDbg, bin.numStmts, target.flashEnd );
+            throwAssemblerErrors(b)
+        }
 
         return {
             src: src,
@@ -1105,7 +1114,7 @@ __flash_checksums:
         }
         const prefix = opts.extinfo.outputPrefix || ""
         bin.writeFile(prefix + pxtc.BINARY_ASM, src)
-        const res = assemble(opts.target, bin, src)
+        const res = assemble(opts.target, bin, src, opts.mbitversion)
         if (res.thumbFile.commPtr)
             bin.commSize = res.thumbFile.commPtr - hexfile.getCommBase()
         if (res.src)

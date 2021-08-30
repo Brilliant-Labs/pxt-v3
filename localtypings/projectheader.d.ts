@@ -9,6 +9,7 @@ declare namespace pxt.Cloud {
 declare namespace pxt.workspace {
     export interface InstallHeader {
         name: string; // script name, should always be in sync with pxt.json name
+        mbitversion?: number;
         meta: pxt.Cloud.JsonScriptMeta; // script meta data
         editor: string; // editor that we're in
         board?: string; // name of the package that contains the board.json info

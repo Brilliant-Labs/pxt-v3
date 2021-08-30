@@ -608,8 +608,8 @@ export class ProjectsCarousel extends data.Component<ProjectsCarouselProps, Proj
         if (pxt.appTarget.appTheme.nameProjectFirst || pxt.appTarget.appTheme.chooseLanguageRestrictionOnNewProject) {
             this.props.parent.askForProjectCreationOptionsAsync()
                 .then(projectSettings => {
-                    const { name, languageRestriction } = projectSettings
-                    this.props.parent.newProject({ name, languageRestriction });
+                    const { name, mbitversion, languageRestriction } = projectSettings
+                    this.props.parent.newProject({ name, mbitversion, languageRestriction });
                 })
         } else {
             this.props.parent.newProject({});
@@ -1308,6 +1308,7 @@ export interface ExitAndSaveDialogState {
     visible?: boolean;
     emoji?: string;
     projectName?: string;
+    projectVersion?: number;
 }
 
 export class ExitAndSaveDialog extends data.Component<ISettingsProps, ExitAndSaveDialogState> {
@@ -1364,7 +1365,7 @@ export class ExitAndSaveDialog extends data.Component<ISettingsProps, ExitAndSav
     }
 
     renderCore() {
-        const { visible, projectName } = this.state;
+        const { visible, projectName, projectVersion } = this.state;
 
         const mobile = pxt.BrowserUtils.isMobile();
         const actions = [
@@ -1404,6 +1405,7 @@ export class ExitAndSaveDialog extends data.Component<ISettingsProps, ExitAndSav
 
 export interface NewProjectDialogState {
     name?: string;
+    mbitversion?: number;
     languageRestriction?: pxt.editor.LanguageRestriction;
     emoji?: string;
     visible?: boolean;
@@ -1429,6 +1431,7 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
         pxt.tickEvent('newprojectdialog.show', undefined, { interactiveConsent: false });
         this.setState({
             name: "",
+            mbitversion: 2,
             emoji: "",
             visible: true,
             languageRestriction: pxt.editor.LanguageRestriction.Standard
@@ -1447,6 +1450,12 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
             languageRestriction: lang as pxt.editor.LanguageRestriction
         });
     }
+    
+    handleVersionChange = (version: string) => {
+        this.setState({
+            mbitversion: Number(version)
+        });
+    }
 
     promptUserAsync() {
         this.show();
@@ -1456,12 +1465,13 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
     }
 
     save = () => {
-        const { name, languageRestriction } = this.state;
+        const { name, mbitversion, languageRestriction } = this.state;
 
         this.hide();
         if (this.createProjectCb) {
             this.createProjectCb({
                 name,
+                mbitversion,
                 languageRestriction
             });
         }
@@ -1488,7 +1498,7 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
     }
 
     renderCore() {
-        const { visible, name, emoji } = this.state;
+        const { visible, name, mbitversion, emoji } = this.state;
         const { python, chooseLanguageRestrictionOnNewProject } = pxt.appTarget.appTheme;
 
         const actions: sui.ModalButton[] = [
@@ -1515,6 +1525,16 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
                 display: lf("{0} Only", "JavaScript")
             }
         ];
+        const mbitVersions: sui.SelectItem[] = [
+            {
+                value: 2,
+                display: lf("Version 2")
+            },
+            {
+                value: 1,
+                display: lf("Version 1")
+            }
+        ];
         const classes = this.props.parent.createModalClasses("newproject");
         const prompt = lf("Give your project a name.");
 
@@ -1531,6 +1551,12 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
                         value={name || ''} onChange={this.handleTextChange} onEnter={this.save}
                         selectOnMount={!mobile} autoFocus={!mobile} />
                 </div>
+            </div>
+            <div>
+                <br />
+                <sui.ExpandableMenu title={lf("microbit Version")} onShow={this.onExpandedMenuShow} onHide={this.onExpandedMenuHide}>
+                    <sui.Select options={mbitVersions} onChange={this.handleVersionChange} aria-label={lf("Select mbit Version")} />
+                </sui.ExpandableMenu>
             </div>
             {chooseLanguageRestrictionOnNewProject && <div>
                 <br />

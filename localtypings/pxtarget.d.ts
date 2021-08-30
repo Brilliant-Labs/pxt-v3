@@ -651,7 +651,9 @@ declare namespace ts.pxtc {
         shortPointers?: boolean; // set to true for 16 bit pointers
         flashCodeAlign?: number; // defaults to 1k
         flashEnd?: number;
+        flashEnd2?: number;
         flashUsableEnd?: number;
+        flashUsableEnd2?: number;
         flashChecksumAddr?: number;
         ramSize?: number;
         patches?: pxt.Map<UpgradePolicy[]>; // semver range -> upgrade policies
@@ -950,6 +952,7 @@ declare namespace ts.pxtc {
         justMyCode?: boolean;
         computeUsedSymbols?: boolean;
         name?: string;
+        mbitversion?: number;
         apisInfo?: ApisInfo;
         bannedCategories?: string[];
         skipPxtModulesTSC?: boolean; // skip re-checking of pxt_modules/*

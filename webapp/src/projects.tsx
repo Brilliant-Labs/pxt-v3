@@ -514,7 +514,7 @@ class HeroBanner extends data.Component<ISettingsProps, HeroBannerState> {
                             youTubePlaylistId: card.youTubePlaylistId,
                             scr: card,
                         },
-                        "large blue button",
+                        "large purple button",
                         label,
                         card.cardType,
                         this.handleCardClick

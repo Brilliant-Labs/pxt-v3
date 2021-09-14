@@ -447,8 +447,8 @@ export function showFirmwareDialogAsync() {
                 </div>
             </div>
             <div>
-                <button onClick={() => window.open("bBoardFirmware2_10.hex", "_blank")} className="ui button icon icon-and-text primary purple attached">
-                    Click to Download bBoardFirmware2_10.hex
+                <button onClick={() => window.open("bBoardFirmware2_16.hex", "_blank")} className="ui button icon icon-and-text primary purple attached">
+                    Click to Download bBoardFirmware2_16.hex
                 </button>
             </div>
         </div>,

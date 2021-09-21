@@ -1394,7 +1394,7 @@ export class ExitAndSaveDialog extends data.Component<ISettingsProps, ExitAndSav
                     <div className="ui form">
                         <sui.Input ref="filenameinput" id={"projectNameInput"}
                             ariaLabel={prompt} autoComplete={false}
-                            value={projectName || ''} onChange={this.handleChange} onEnter={this.save}
+                            value={projectName || ''} onChange={this.handleChange}
                             selectOnMount={!mobile} autoFocus={!mobile} />
                     </div>
                 </div>
@@ -1431,7 +1431,7 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
         pxt.tickEvent('newprojectdialog.show', undefined, { interactiveConsent: false });
         this.setState({
             name: "",
-            mbitversion: 2,
+            mbitversion: 0,
             emoji: "",
             visible: true,
             languageRestriction: pxt.editor.LanguageRestriction.Standard
@@ -1451,11 +1451,11 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
         });
     }
     
-    handleVersionChange = (version: string) => {
-        this.setState({
-            mbitversion: Number(version)
-        });
-    }
+    // handleVersionChange = (version: string) => {
+    //     this.setState({
+    //         mbitversion: Number(version)
+    //     });
+    // }
 
     promptUserAsync() {
         this.show();
@@ -1464,9 +1464,29 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
         });
     }
 
-    save = () => {
-        const { name, mbitversion, languageRestriction } = this.state;
+    save1 = () => {
+        const { name, languageRestriction } = this.state;
+        const mbitversion = 1;
+        this.hide();
+        if (this.createProjectCb) {
+            this.createProjectCb({
+                name,
+                mbitversion,
+                languageRestriction
+            });
+        }
 
+        pxt.tickEvent(
+            'newprojectdialog.projectcreate',
+            { language: languageRestriction },
+            { interactiveConsent: true }
+        );
+        this.createProjectCb = null;
+    }
+
+    save2 = () => {
+        const { name, languageRestriction } = this.state;
+        const mbitversion = 2;
         this.hide();
         if (this.createProjectCb) {
             this.createProjectCb({
@@ -1503,8 +1523,14 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
 
         const actions: sui.ModalButton[] = [
             {
-                label: lf("Create"),
-                onclick: this.save,
+                label: lf("Create microbit V1"),
+                onclick: this.save1,
+                icon: 'check',
+                className: 'approve positive'
+            },
+            {
+                label: lf("Create microbit V2"),
+                onclick: this.save2,
                 icon: 'check',
                 className: 'approve positive'
             }
@@ -1548,22 +1574,26 @@ export class NewProjectDialog extends data.Component<ISettingsProps, NewProjectD
                 <div className="ui form">
                     <sui.Input ref="filenameinput" id={"projectNameInput"}
                         ariaLabel={prompt} autoComplete={false}
-                        value={name || ''} onChange={this.handleTextChange} onEnter={this.save}
+                        value={name || ''} onChange={this.handleTextChange}
                         selectOnMount={!mobile} autoFocus={!mobile} />
                 </div>
             </div>
-            <div>
+            {/* <div>
                 <br />
-                <sui.ExpandableMenu title={lf("microbit Version")} onShow={this.onExpandedMenuShow} onHide={this.onExpandedMenuHide}>
+                <sui.ExpandableMenu title={lf("How to know my microbit Version?")} onShow={this.onExpandedMenuShow} onHide={this.onExpandedMenuHide}>
                     <sui.Select options={mbitVersions} onChange={this.handleVersionChange} aria-label={lf("Select mbit Version")} />
                 </sui.ExpandableMenu>
-            </div>
+            </div> */}
             {chooseLanguageRestrictionOnNewProject && <div>
                 <br />
                 <sui.ExpandableMenu title={lf("Code options")} onShow={this.onExpandedMenuShow} onHide={this.onExpandedMenuHide}>
                     <sui.Select options={langOpts} onChange={this.handleLanguageChange} aria-label={lf("Select Language")} />
                 </sui.ExpandableMenu>
-            </div>}
+            </div>
+            }
+            <div>
+                <a href="https://kitronik.co.uk/blogs/resources/explore-micro-bit-v1-microbit-v2-differences">How to know my microbit Version?</a>
+            </div>    
         </sui.Modal>
     }
 }

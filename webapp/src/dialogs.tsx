@@ -426,23 +426,19 @@ export function showFirmwareDialogAsync() {
                         {lf("Instructions")}
                     </h3>
                     <p>
-                        {lf("Turn the b.Board off")}
+                        {lf("Plug micro:bit into computer and slot into b.Board")}
                         <br />
-                        {lf("Download the firmware below and load it onto the micro:bit")}
+                        {lf("Download the firmware below")}
                         <br />
-                        {lf("Disconnect your micro:bit from your computer")}
+                        {lf("Put firmware onto micro:bit")}
                         <br />
-                        {lf("Turn the b.Board to the on position and confirm the red LED is on")}
+                        {lf("Turn the b.Board OFF")}
                         <br />
-                        {lf("Enjoy the light show")}
+                        {lf("Turn the b.Board ON")}
                         <br />
-                        {lf("When every other LED is lit up as shown, the firmware has been updated")}
+                        {lf("Press A on the micro:bit")}
                         <br />
-                        {lf("Turn the b.Board off again")}
-                        <br />
-                        {lf("Load some code onto your micro:bit")}
-                        <br />                        
-                        {lf("Turn the b.Board back on again and enjoy!")}
+                        {lf("When you see the smiley face, your b.Board now has the latest firmware")}
                     </p>
                 </div>
             </div>

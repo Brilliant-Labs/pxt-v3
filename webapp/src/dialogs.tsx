@@ -426,11 +426,11 @@ export function showFirmwareDialogAsync() {
                         {lf("Instructions")}
                     </h3>
                     <p>
-                        {lf("Plug micro:bit into computer and slot into b.Board")}
+                        {lf("Place your micro:bit into your b.Board and connect to the PC with a USB Cable")}
                         <br />
                         {lf("Download the firmware below")}
                         <br />
-                        {lf("Put firmware onto micro:bit")}
+                        {lf("Drag firmware file onto micro:bit drive")}
                         <br />
                         {lf("Turn the b.Board OFF")}
                         <br />
@@ -443,8 +443,8 @@ export function showFirmwareDialogAsync() {
                 </div>
             </div>
             <div>
-                <button onClick={() => window.open("bBoardFirmware2_16.hex", "_blank")} className="ui button icon icon-and-text primary purple attached">
-                    Click to Download bBoardFirmware2_16.hex
+                <button onClick={() => window.open("bBoardFirmware2_17.hex", "_blank")} className="ui button icon icon-and-text primary purple attached">
+                    Click to Download bBoardFirmware2_17.hex
                 </button>
             </div>
         </div>,

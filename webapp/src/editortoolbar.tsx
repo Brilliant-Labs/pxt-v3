@@ -312,7 +312,7 @@ export class EditorToolbar extends data.Component<ISettingsProps, EditorToolbarS
     }
 
     renderCore() {
-        const { tutorialOptions, projectName, compiling, isSaving, simState, debugging, editorState } = this.props.parent.state;
+        const { tutorialOptions, projectName, projectmbitversion, compiling, isSaving, simState, debugging, editorState } = this.props.parent.state;
         const header = this.getData(`header:${this.props.parent.state.header.id}`) ?? this.props.parent.state.header;
 
         const targetTheme = pxt.appTarget.appTheme;
@@ -417,6 +417,7 @@ export class EditorToolbar extends data.Component<ISettingsProps, EditorToolbarS
                 <div id="projectNameArea" role="menu" className="ui column items">
                     <div className={`ui right ${showSave ? "labeled" : ""} input projectname-input projectname-computer`}>
                         {showProjectRename && this.getSaveInput(showSave, "fileNameInput2", projectName, showProjectRenameReadonly)}
+                        {/* {showProjectRename && this.getSaveInput(showSave, "fileNameInput3", projectmbitversion, showProjectRenameReadonly)} */}
                         {showGithub && <githubbutton.GithubButton parent={this.props.parent} key={`githubbtn${computer}`} />}
                         {showCloudButton && cloudButton}
                 </div>
